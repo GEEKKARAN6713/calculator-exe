@@ -150,6 +150,4 @@ If you like this project:
 
 ## 📝 License
 
-This project is licensed under the **MIT License**.
-* A **project website (GitHub Pages)**
-  Just tell me — I can create it for you.
+This project is licensed under the **MIT License**
