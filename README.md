@@ -117,7 +117,10 @@ dist/calculator.exe
 ## 📸 Screenshots
 
 ```
-![Calculator UI](assets/screenshot.png)
+![Screenshot 1](assets/Screenshot%202025-12-03%20201459.png)
+![Screenshot 2](assets/Screenshot%202025-12-03%20201516.png)
+![Screenshot 3](assets/Screenshot%202025-12-03%20201530.png)
+![Screenshot 4](assets/Screenshot%202025-12-03%20201539.png)
 ```
 
 ---
