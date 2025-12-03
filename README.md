@@ -54,7 +54,7 @@ calculator-exe/
 │
 ├── index.html
 ├── assets/
-│    ├── LOGO.png
+│    ├── logo.png
 │    ├── Screenshot 2025-12-03 201459.png
 │    ├── Screenshot 2025-12-03 201516.png
 │    ├── Screenshot 2025-12-03 201530.png
