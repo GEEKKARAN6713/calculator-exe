@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aesthetic Calculator</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(45deg, #1a1a1a, #2d2d2d, #1f1f1f, #383838);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .calculator {
+            position: relative;
+            width: 350px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            overflow: hidden;
+            transition: height 0.3s ease;
+        }
+
+        .display {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-end;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: right;
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+
+        .previous-operand {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+            min-height: 1.5rem;
+        }
+
+        .current-operand {
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: 500;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        button {
+            height: 60px;
+            border: none;
+            outline: none;
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 500;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        button:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        button:active {
+            transform: scale(0.95);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .span-two {
+            grid-column: span 2;
+        }
+
+        .operator {
+            background: rgba(255, 192, 203, 0.5); /* Soft pink tint */
+            font-weight: 700;
+        }
+
+        .operator:hover {
+            background: rgba(255, 192, 203, 0.7);
+        }
+
+        .clear, .delete {
+            background: rgba(255, 107, 107, 0.5); /* Soft red tint */
+        }
+        
+        .clear:hover, .delete:hover {
+            background: rgba(255, 107, 107, 0.7);
+        }
+
+        .equals {
+            background: rgba(100, 220, 150, 0.5); /* Soft green tint */
+        }
+
+        .equals:hover {
+            background: rgba(100, 220, 150, 0.7);
+        }
+
+        /* AI Button Styles */
+        .ai-btn {
+            background: rgba(166, 193, 238, 0.5); /* Soft blue/purple tint */
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .ai-btn:hover {
+            background: rgba(166, 193, 238, 0.7);
+            box-shadow: 0 0 20px rgba(166, 193, 238, 0.6);
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            border-radius: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-content {
+            width: 90%;
+            background: rgba(40, 40, 40, 0.9);
+            backdrop-filter: blur(20px);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            text-align: center;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-title {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .modal-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+        }
+        
+        .modal-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .modal-result {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #ddd;
+            min-height: 20px;
+            line-height: 1.4;
+            text-align: left;
+            background: rgba(0,0,0,0.3);
+            padding: 10px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .btn-modal {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+            height: auto;
+            font-size: 0.9rem;
+            color: white;
+        }
+
+        .btn-cancel {
+            background: #ff6b6b;
+        }
+        
+        .btn-submit {
+            background: #64dc96;
+        }
+
+        .loader {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.1);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 400px) {
+            .calculator {
+                width: 90%;
+            }
+            .current-operand {
+                font-size: 2rem;
+            }
+            button {
+                height: 50px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calculator">
+        <!-- AI Modal Overlay -->
+        <div class="modal-overlay" id="ai-modal">
+            <div class="modal-content">
+                <div class="modal-title" id="modal-title">✨ Ask Gemini AI</div>
+                <input type="text" class="modal-input" id="ai-input" placeholder="e.g. 15% of 200 or 50 USD in EUR">
+                <div class="loader" id="ai-loader"></div>
+                <div class="modal-result" id="ai-result"></div>
+                <div class="modal-buttons">
+                    <button class="btn-modal btn-cancel" onclick="ui.closeModal()">Close</button>
+                    <button class="btn-modal btn-submit" id="ai-submit-btn" onclick="ui.submitAI()">Solve</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="display">
+            <div class="previous-operand" id="previous-operand"></div>
+            <div class="current-operand" id="current-operand">0</div>
+        </div>
+        <div class="buttons">
+            <!-- New AI Row -->
+            <button class="ai-btn span-two" onclick="ui.openAskAI()">✨ Ask AI</button>
+            <button class="ai-btn span-two" onclick="ui.explainCurrent()">🧠 Explain</button>
+
+            <!-- Original Calculator Buttons -->
+            <button class="clear span-two" onclick="calculator.clear()">AC</button>
+            <button class="delete" onclick="calculator.delete()">DEL</button>
+            <button class="operator" onclick="calculator.appendOperation('/')">÷</button>
+            
+            <button onclick="calculator.appendNumber('7')">7</button>
+            <button onclick="calculator.appendNumber('8')">8</button>
+            <button onclick="calculator.appendNumber('9')">9</button>
+            <button class="operator" onclick="calculator.appendOperation('*')">×</button>
+            
+            <button onclick="calculator.appendNumber('4')">4</button>
+            <button onclick="calculator.appendNumber('5')">5</button>
+            <button onclick="calculator.appendNumber('6')">6</button>
+            <button class="operator" onclick="calculator.appendOperation('-')">-</button>
+            
+            <button onclick="calculator.appendNumber('1')">1</button>
+            <button onclick="calculator.appendNumber('2')">2</button>
+            <button onclick="calculator.appendNumber('3')">3</button>
+            <button class="operator" onclick="calculator.appendOperation('+')">+</button>
+            
+            <button onclick="calculator.appendNumber('.')">.</button>
+            <button onclick="calculator.appendNumber('0')">0</button>
+            <button class="equals span-two" onclick="calculator.compute()">=</button>
+        </div>
+    </div>
+
+    <script>
+        const apiKey = ""; // API Key injected by environment
+
+        class Calculator {
+            constructor(previousOperandTextElement, currentOperandTextElement) {
+                this.previousOperandTextElement = previousOperandTextElement;
+                this.currentOperandTextElement = currentOperandTextElement;
+                this.clear();
+            }
+
+            clear() {
+                this.currentOperand = '0';
+                this.previousOperand = '';
+                this.operation = undefined;
+                this.updateDisplay();
+            }
+
+            delete() {
+                if (this.currentOperand === '0') return;
+                this.currentOperand = this.currentOperand.toString().slice(0, -1);
+                if (this.currentOperand === '') this.currentOperand = '0';
+                this.updateDisplay();
+            }
+
+            appendNumber(number) {
+                if (number === '.' && this.currentOperand.includes('.')) return;
+                if (this.currentOperand === '0' && number !== '.') {
+                    this.currentOperand = number.toString();
+                } else {
+                    this.currentOperand = this.currentOperand.toString() + number.toString();
+                }
+                this.updateDisplay();
+            }
+
+            setNumber(number) {
+                this.currentOperand = number.toString();
+                this.operation = undefined;
+                this.previousOperand = '';
+                this.updateDisplay();
+            }
+
+            appendOperation(operation) {
+                if (this.currentOperand === '') return;
+                if (this.previousOperand !== '') {
+                    this.compute();
+                }
+                this.operation = operation;
+                this.previousOperand = this.currentOperand;
+                this.currentOperand = '';
+                this.updateDisplay();
+            }
+
+            compute() {
+                let computation;
+                const prev = parseFloat(this.previousOperand);
+                const current = parseFloat(this.currentOperand);
+                if (isNaN(prev) || isNaN(current)) return;
+                switch (this.operation) {
+                    case '+':
+                        computation = prev + current;
+                        break;
+                    case '-':
+                        computation = prev - current;
+                        break;
+                    case '*':
+                        computation = prev * current;
+                        break;
+                    case '/':
+                        computation = prev / current;
+                        break;
+                    default:
+                        return;
+                }
+                this.currentOperand = computation;
+                this.operation = undefined;
+                this.previousOperand = '';
+                this.updateDisplay();
+            }
+
+            getDisplayNumber(number) {
+                const stringNumber = number.toString();
+                const integerDigits = parseFloat(stringNumber.split('.')[0]);
+                const decimalDigits = stringNumber.split('.')[1];
+                let integerDisplay;
+                if (isNaN(integerDigits)) {
+                    integerDisplay = '';
+                } else {
+                    integerDisplay = integerDigits.toLocaleString('en', { maximumFractionDigits: 0 });
+                }
+                if (decimalDigits != null) {
+                    return `${integerDisplay}.${decimalDigits}`;
+                } else {
+                    return integerDisplay;
+                }
+            }
+
+            updateDisplay() {
+                this.currentOperandTextElement.innerText = this.getDisplayNumber(this.currentOperand);
+                if (this.operation != null) {
+                    this.previousOperandTextElement.innerText = 
+                        `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`;
+                } else {
+                    this.previousOperandTextElement.innerText = '';
+                }
+            }
+        }
+
+        // --- AI & UI Logic ---
+        class UIManager {
+            constructor() {
+                this.modal = document.getElementById('ai-modal');
+                this.input = document.getElementById('ai-input');
+                this.resultDiv = document.getElementById('ai-result');
+                this.loader = document.getElementById('ai-loader');
+                this.submitBtn = document.getElementById('ai-submit-btn');
+                this.modalTitle = document.getElementById('modal-title');
+                this.mode = 'ask'; // 'ask' or 'explain'
+            }
+
+            openAskAI() {
+                this.mode = 'ask';
+                this.modalTitle.innerText = "✨ Ask Gemini AI";
+                this.input.style.display = 'block';
+                this.input.value = '';
+                this.input.placeholder = "e.g., Cost of 5 apples at $1.20";
+                this.submitBtn.innerText = "Solve";
+                this.submitBtn.style.display = 'block';
+                this.resultDiv.style.display = 'none';
+                this.resultDiv.innerText = '';
+                this.modal.classList.add('active');
+                this.input.focus();
+            }
+
+            openExplain() {
+                this.mode = 'explain';
+                this.modalTitle.innerText = "🧠 Explain Number";
+                this.input.style.display = 'none'; // No input needed
+                this.submitBtn.style.display = 'none'; // Auto submit
+                this.resultDiv.style.display = 'none';
+                this.modal.classList.add('active');
+                
+                // Trigger explanation immediately
+                this.explainLogic();
+            }
+
+            closeModal() {
+                this.modal.classList.remove('active');
+            }
+
+            async explainLogic() {
+                const number = calculator.currentOperand;
+                if (!number || number === '0') {
+                    this.resultDiv.style.display = 'block';
+                    this.resultDiv.innerText = "Enter a number first to explain it!";
+                    return;
+                }
+
+                this.setLoading(true);
+                try {
+                    const prompt = `Explain the number ${number} in a mathematical context (e.g., is it prime? interesting properties? scientific constants?). Keep it very brief (max 2 sentences) and fun.`;
+                    const text = await this.callGemini(prompt);
+                    this.resultDiv.style.display = 'block';
+                    this.resultDiv.innerText = text;
+                } catch (error) {
+                    this.resultDiv.style.display = 'block';
+                    this.resultDiv.innerText = "Error contacting AI. Try again.";
+                }
+                this.setLoading(false);
+            }
+
+            async submitAI() {
+                if (this.mode === 'ask') {
+                    const query = this.input.value;
+                    if (!query) return;
+
+                    this.setLoading(true);
+                    try {
+                        const prompt = `You are a calculator assistant. 
+                        User Query: "${query}"
+                        Task: Solve the math problem.
+                        Output: Return ONLY a JSON object in this format: { "result": number, "explanation": "short string" }. 
+                        Example: { "result": 15, "explanation": "15% of 100 is 15" }
+                        Do not use Markdown formatting. Just raw JSON.`;
+
+                        const responseText = await this.callGemini(prompt);
+                        
+                        // Clean up markdown if present
+                        const cleanText = responseText.replace(/```json/g, '').replace(/```/g, '').trim();
+                        const data = JSON.parse(cleanText);
+
+                        if (data.result !== undefined) {
+                            calculator.setNumber(data.result);
+                            this.resultDiv.style.display = 'block';
+                            this.resultDiv.innerText = `✨ ${data.explanation}`;
+                            // Optional: Close modal after short delay? No, let user see explanation.
+                        }
+                    } catch (error) {
+                        console.error(error);
+                        this.resultDiv.style.display = 'block';
+                        this.resultDiv.innerText = "Could not solve. Please try a clearer math question.";
+                    }
+                    this.setLoading(false);
+                }
+            }
+
+            setLoading(isLoading) {
+                if (isLoading) {
+                    this.loader.style.display = 'block';
+                    this.resultDiv.style.display = 'none';
+                    if (this.mode === 'ask') this.submitBtn.disabled = true;
+                } else {
+                    this.loader.style.display = 'none';
+                    if (this.mode === 'ask') this.submitBtn.disabled = false;
+                }
+            }
+
+            async callGemini(prompt) {
+                const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+                const payload = {
+                    contents: [{ parts: [{ text: prompt }] }]
+                };
+
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const data = await response.json();
+                return data.candidates[0].content.parts[0].text;
+            }
+
+            explainCurrent() {
+                this.openExplain();
+            }
+        }
+
+        const previousOperandTextElement = document.getElementById('previous-operand');
+        const currentOperandTextElement = document.getElementById('current-operand');
+
+        const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement);
+        const ui = new UIManager();
+
+        // Add Keyboard Support
+        document.addEventListener('keydown', (e) => {
+            if (document.getElementById('ai-modal').classList.contains('active')) {
+                if (e.key === 'Escape') ui.closeModal();
+                if (e.key === 'Enter' && ui.mode === 'ask') ui.submitAI();
+                return;
+            }
+
+            if (e.key >= 0 && e.key <= 9) calculator.appendNumber(e.key);
+            if (e.key === '.') calculator.appendNumber('.');
+            if (e.key === '=' || e.key === 'Enter') calculator.compute();
+            if (e.key === 'Backspace') calculator.delete();
+            if (e.key === 'Escape') calculator.clear();
+            if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') calculator.appendOperation(e.key);
+        });
+    </script>
+</body>
+</html>
