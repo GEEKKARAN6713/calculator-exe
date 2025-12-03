@@ -102,18 +102,6 @@ The best method for development:
 
 ```
 http://127.0.0.1:5500/index.html
-```
-
-#### **Option B — Direct Run**
-
-Double-click:
-
-```
-index.html
-```
-
-It will open instantly in your default browser.
-
 ---
 
 ## 🤝 Contributing
