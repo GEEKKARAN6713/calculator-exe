@@ -1,103 +1,152 @@
-🌙✨ Aesthetic AI Calculator – calculator-exe
+# 🌙✨ Aesthetic AI Calculator – calculator-exe
+
 Where mathematics meets modern interface design.
-<p align="center"> <img src="https://img.shields.io/badge/Status-Active-success?style=for-the-badge"> <img src="https://img.shields.io/badge/Version-1.0-blue?style=for-the-badge"> <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge"> </p> <p align="center"> <b>A sleek, dark-mode calculator with smooth UI/UX, modern animations, and clean design.</b> </p>
-🎨 Preview
 
-(Add your actual screenshot later)
+<p align="center">
+  <img src="https://img.shields.io/badge/Status-Active-success?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Version-1.0-blue?style=for-the-badge">
+  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge">
+</p>
 
-<p align="center"> <img src="assets/screenshot.png" width="500" alt="Calculator Preview"/> </p>
-🚀 Features
+<p align="center">
+  <b>A sleek, dark-mode calculator built with modern UI/UX principles, smooth animations, and clean minimalist design.</b>
+</p>
 
-🔢 Perform all basic arithmetic operations
+---
 
-🌙 Gorgeous dark-themed UI
+## 🎨 Preview
 
-⚡ Fast and smooth interactions
+<p align="center">
+  <img src="assets/screenshot.png" width="500" alt="Calculator Preview"/>
+</p>
 
-📱 Fully responsive on all screen sizes
+---
 
-🔧 Lightweight and optimized
+## 🚀 Features
 
-🎨 Clean modern layout
+* 🔢 Basic arithmetic operations
+* 🌙 Elegant dark-mode UI with a modern aesthetic
+* ⚡ Smooth animations and fast performance
+* 📱 Fully responsive on all screen sizes
+* 🔧 Lightweight and optimized
+* 🎨 Clean, minimalist layout
+* 🧠 Smart error handling
+* ⌨️ Keyboard input support
 
-🧠 Smart error handling ("Divide by zero", invalid input, etc.)
+---
 
-⌨️ Optional keyboard support
+## 🛠️ Tech Stack
 
-🛠️ Tech Stack
-<p align="left"> <img src="https://skillicons.dev/icons?i=html,css,js,python,cpp,cs" /> </p>
+<p align="left">
+  <img src="https://skillicons.dev/icons?i=html,css,js,python,cpp,cs" />
+</p>
 
-✔ Modify based on your actual project’s tech
+---
 
-📂 Project Structure
+## 📂 Project Structure
+
+```
 calculator-exe/
 │
 ├── src/
-│   ├── index.html          # App UI (if web app)
-│   ├── style.css           # Styling / animations
+│   ├── index.html          # Main UI
+│   ├── style.css           # Styling and animations
 │   ├── script.js           # Calculator logic
-│   └── calculator.py       # Backend (optional)
+│   └── calculator.py       # Optional backend
 │
 ├── assets/
-│   └── screenshot.png      # Preview image
+│   └── screenshot.png      # App preview image
 │
 ├── dist/
-│   └── calculator.exe      # Windows build (if applicable)
+│   └── calculator.exe      # Windows executable build
 │
 ├── README.md
 ├── .gitignore
 └── LICENSE
+```
 
-▶️ Run the Project
-🔵 Web Version
+---
+
+## ▶️ Run the Project
+
+### 🔵 Web Version
+
+Clone the repository:
+
+```bash
 git clone https://github.com/GEEKKARAN6713/calculator-exe.git
+```
 
+Open:
 
-Then open:
-
+```
 src/index.html
+```
 
-🟣 Python Version
+---
+
+### 🟣 Python Version
+
+```bash
 pip install -r requirements.txt
 python calculator.py
+```
 
-🟢 EXE Build
+---
 
-Just open:
+### 🟢 EXE Build
 
+Run the executable:
+
+```
 dist/calculator.exe
+```
 
-📦 Releases
-<p align="center"> <a href="https://github.com/GEEKKARAN6713/calculator-exe/releases"> <img src="https://img.shields.io/badge/Download-Latest_Release-purple?style=for-the-badge"> </a> </p>
-📸 Screenshots
+---
 
-Add more screenshots by placing them in the assets/ folder:
+## 📦 Releases
 
-![UI Preview](assets/screenshot.png)
+<p align="center">
+  <a href="https://github.com/GEEKKARAN6713/calculator-exe/releases">
+    <img src="https://img.shields.io/badge/Download-Latest_Release-purple?style=for-the-badge">
+  </a>
+</p>
 
-🤝 Contributing
+---
 
-Pull requests are welcome!
-If you wish to add major changes:
+## 📸 Screenshots
 
-Fork the project
+```
+![Calculator UI](assets/screenshot.png)
+```
 
-Create a new branch
+---
 
-Make your changes
+## 🤝 Contributing
 
-Submit a PR
+Contributions are welcome!
 
-⭐ Show Your Support
+1. Fork the repository
+2. Create a new branch
+3. Commit your updates
+4. Submit a pull request
+
+---
+
+## ⭐ Show Your Support
 
 If you like this project:
 
 🌟 Star the repository
 🔱 Share it
-💬 Give feedback
+💬 Send feedback
 
-It helps a lot!
+Your support helps the project grow!
 
-📝 License
+---
 
-This project is licensed under the MIT License.
+## 📝 License
+
+This project is licensed under the **MIT License**.
+
+I can generate them too — just tell me!
