@@ -9,7 +9,7 @@ Where mathematics meets modern interface design.
 </p>
 
 <p align="center">
-  <b>A sleek, dark-mode calculator built with modern UI/UX principles, smooth animations, and clean minimalist design.</b>
+  <b>A sleek, dark-mode calculator built with modern UI/UX principles, smooth animations, and a clean minimalist design.</b>
 </p>
 
 ---
@@ -17,7 +17,7 @@ Where mathematics meets modern interface design.
 ## 🎨 Preview
 
 <p align="center">
-  <img src="assets/screenshot.png" width="500" alt="Calculator Preview"/>
+  <img src="assets/Screenshot%202025-12-03%20201459.png" width="500" alt="Calculator Preview">
 </p>
 
 ---
@@ -25,9 +25,9 @@ Where mathematics meets modern interface design.
 ## 🚀 Features
 
 * 🔢 Basic arithmetic operations
-* 🌙 Elegant dark-mode UI with a modern aesthetic
+* 🌙 Elegant dark-mode UI
 * ⚡ Smooth animations and fast performance
-* 📱 Fully responsive on all screen sizes
+* 📱 Fully responsive on all device sizes
 * 🔧 Lightweight and optimized
 * 🎨 Clean, minimalist layout
 * 🧠 Smart error handling
@@ -49,16 +49,19 @@ Where mathematics meets modern interface design.
 calculator-exe/
 │
 ├── src/
-│   ├── index.html          # Main UI
-│   ├── style.css           # Styling and animations
-│   ├── script.js           # Calculator logic
-│   └── calculator.py       # Optional backend
+│   ├── index.html
+│   ├── style.css
+│   ├── script.js
+│   └── calculator.py
 │
 ├── assets/
-│   └── screenshot.png      # App preview image
+│   ├── Screenshot 2025-12-03 201459.png
+│   ├── Screenshot 2025-12-03 201516.png
+│   ├── Screenshot 2025-12-03 201530.png
+│   └── Screenshot 2025-12-03 201539.png
 │
 ├── dist/
-│   └── calculator.exe      # Windows executable build
+│   └── calculator.exe
 │
 ├── README.md
 ├── .gitignore
@@ -67,11 +70,23 @@ calculator-exe/
 
 ---
 
+## 📸 Screenshots
+
+<p align="center">
+  <img src="assets/Screenshot%202025-12-03%20201459.png" width="400">
+  <img src="assets/Screenshot%202025-12-03%20201516.png" width="400">
+</p>
+
+<p align="center">
+  <img src="assets/Screenshot%202025-12-03%20201530.png" width="400">
+  <img src="assets/Screenshot%202025-12-03%20201539.png" width="400">
+</p>
+
+---
+
 ## ▶️ Run the Project
 
 ### 🔵 Web Version
-
-Clone the repository:
 
 ```bash
 git clone https://github.com/GEEKKARAN6713/calculator-exe.git
@@ -96,7 +111,7 @@ python calculator.py
 
 ### 🟢 EXE Build
 
-Run the executable:
+Run:
 
 ```
 dist/calculator.exe
@@ -114,24 +129,11 @@ dist/calculator.exe
 
 ---
 
-## 📸 Screenshots
-
-```
-![Screenshot 1](assets/Screenshot%202025-12-03%20201459.png)
-![Screenshot 2](assets/Screenshot%202025-12-03%20201516.png)
-![Screenshot 3](assets/Screenshot%202025-12-03%20201530.png)
-![Screenshot 4](assets/Screenshot%202025-12-03%20201539.png)
-```
-
----
-
 ## 🤝 Contributing
 
-Contributions are welcome!
-
 1. Fork the repository
-2. Create a new branch
-3. Commit your updates
+2. Create a feature branch
+3. Commit your changes
 4. Submit a pull request
 
 ---
@@ -142,14 +144,12 @@ If you like this project:
 
 🌟 Star the repository
 🔱 Share it
-💬 Send feedback
-
-Your support helps the project grow!
+💬 Leave feedback
 
 ---
 
 ## 📝 License
 
 This project is licensed under the **MIT License**.
-
-I can generate them too — just tell me!
+* A **project website (GitHub Pages)**
+  Just tell me — I can create it for you.
