@@ -87,21 +87,32 @@ calculator-exe/
 git clone https://github.com/GEEKKARAN6713/calculator-exe.git
 ```
 
-### **2. Open the project folder**
+### **2. Run index.html**
 
-```
-calculator-exe/
-```
+You can use **any** browser to run the project.
 
-### **3. Open index.html**
+#### **Option A — VS Code (Live Server)**
 
-Double-click:
+The best method for development:
+
+1. Open the folder in VS Code
+2. Right-click `index.html`
+3. Select **Open with Live Server**
+4. The calculator will run at:
 
 ```
 http://127.0.0.1:5500/index.html
 ```
 
-Or open it inside VS Code using Live Server.
+#### **Option B — Direct Run**
+
+Double-click:
+
+```
+index.html
+```
+
+It will open instantly in your default browser.
 
 ---
 
