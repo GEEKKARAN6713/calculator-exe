@@ -98,7 +98,7 @@ calculator-exe/
 Double-click:
 
 ```
-index.html
+http://127.0.0.1:5500/index.html
 ```
 
 Or open it inside VS Code using Live Server.
