@@ -1,5 +1,9 @@
 # 🌙✨ Aesthetic AI Calculator – calculator-exe
 
+<p align="center">
+  <img src="assets/logo.png" width="180" alt="Project Logo">
+</p>
+
 Where mathematics meets modern interface design.
 
 <p align="center">
@@ -38,7 +42,7 @@ Where mathematics meets modern interface design.
 ## 🛠️ Tech Stack
 
 <p align="left">
-  <img src="https://skillicons.dev/icons?i=html,css,js,python,cpp,cs" />
+  <img src="https://skillicons.dev/icons?i=html,css,js" />
 </p>
 
 ---
@@ -48,24 +52,15 @@ Where mathematics meets modern interface design.
 ```
 calculator-exe/
 │
-├── src/
-│   ├── index.html
-│   ├── style.css
-│   ├── script.js
-│   └── calculator.py
-│
+├── index.html
 ├── assets/
-│   ├── Screenshot 2025-12-03 201459.png
-│   ├── Screenshot 2025-12-03 201516.png
-│   ├── Screenshot 2025-12-03 201530.png
-│   └── Screenshot 2025-12-03 201539.png
+│    ├── LOGO.png
+│    ├── Screenshot 2025-12-03 201459.png
+│    ├── Screenshot 2025-12-03 201516.png
+│    ├── Screenshot 2025-12-03 201530.png
+│    └── Screenshot 2025-12-03 201539.png
 │
-├── dist/
-│   └── calculator.exe
-│
-├── README.md
-├── .gitignore
-└── LICENSE
+└── README.md
 ```
 
 ---
@@ -84,48 +79,29 @@ calculator-exe/
 
 ---
 
-## ▶️ Run the Project
+## ▶️ Run the Project Locally
 
-### 🔵 Web Version
+### **1. Clone the repository**
 
 ```bash
 git clone https://github.com/GEEKKARAN6713/calculator-exe.git
 ```
 
-Open:
+### **2. Open the project folder**
 
 ```
-src/index.html
+calculator-exe/
 ```
 
----
+### **3. Open index.html**
 
-### 🟣 Python Version
-
-```bash
-pip install -r requirements.txt
-python calculator.py
-```
-
----
-
-### 🟢 EXE Build
-
-Run:
+Double-click:
 
 ```
-dist/calculator.exe
+index.html
 ```
 
----
-
-## 📦 Releases
-
-<p align="center">
-  <a href="https://github.com/GEEKKARAN6713/calculator-exe/releases">
-    <img src="https://img.shields.io/badge/Download-Latest_Release-purple?style=for-the-badge">
-  </a>
-</p>
+Or open it inside VS Code using Live Server.
 
 ---
 
@@ -150,4 +126,4 @@ If you like this project:
 
 ## 📝 License
 
-This project is licensed under the **MIT License**
+This project is licensed under the **MIT License**.
