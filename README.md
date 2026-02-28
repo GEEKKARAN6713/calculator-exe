@@ -4,7 +4,7 @@
   <img src="assets/logo.png" width="180" alt="Project Logo">
 </p>
 
-Where mathematics meets modern interface design
+Where mathematics meets modern interface design.
 
 <p align="center">
   <img src="https://img.shields.io/badge/Status-Active-success?style=for-the-badge">
